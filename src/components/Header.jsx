@@ -37,11 +37,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 h-28 flex items-center justify-between">
 
           {/* LOGO CON GORRITO DE SANTA */}
-<<<<<<< HEAD
           <a href="#top" className="relative group">
-=======
-          <div className="relative group">
->>>>>>> 5f6f382240afc4c55bad3e424ac1da9a3121b806
             <span className="absolute -top-5 -left-4 text-4xl z-10 drop-shadow-md rotate-[-15deg] group-hover:rotate-[-25deg] transition-transform duration-300">
               🎅
             </span>
@@ -53,11 +49,7 @@ export default function Header() {
               priority
               className="relative z-0"
             />
-<<<<<<< HEAD
           </a>
-=======
-          </div>
->>>>>>> 5f6f382240afc4c55bad3e424ac1da9a3121b806
 
           {/* DESKTOP MENU */}
           <nav
