@@ -13,7 +13,7 @@ export default function Header() {
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
     if (typeof window !== "undefined") {
-      window.history.replaceState(null, "", `${id}`);
+      window.history.replaceState(null, "", `#${id}`);
     }
     setOpenMenu(null);
     setMobileOpen(false);
