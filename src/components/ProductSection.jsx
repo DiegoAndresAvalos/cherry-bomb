@@ -29,7 +29,7 @@ export default function ProductSection({ id, title, products, bgColor = "bg-whit
     <section
       id={id}
       // Offset de scroll más alto para evitar que el header tape el título
-      className={`${bgColor} py-20 scroll-mt-36 lg:scroll-mt-32 relative border-t-2 border-rose-100 pt-16`}
+      className={`${bgColor} py-20 scroll-mt-48 lg:scroll-mt-32 relative border-t-2 border-rose-100 pt-16`}
       style={christmasLightsStyle}
     >
       <div className="max-w-7xl mx-auto px-6 relative z-10">
