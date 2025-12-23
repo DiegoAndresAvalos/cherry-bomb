@@ -86,7 +86,6 @@ const products = {
       { id: 47, name: "Peluchita rosita", price: 12, image: "/Peluchita-rosita-bebé.jpg" },
       { id: 48, name: "Peluchito amarillo mediano", price: 14, image: "/Peluchito-mediano-amarillito.jpg" },
       { id: 49, name: "Peluchita rosita bebé", price: 12, image: "/Peluchita-rosita-bebé-2.jpg" },
-      { id: 50, name: "Muñequita verde con mochila", price: 15, image: "/Muñequita-verde-con-mochilita.jpg" },
       { id: 51, name: "Muñequita naranja con mochila", price: 15, image: "/Muñequita-naranjita-con-mochilita.jpg" },
       { id: 52, name: "Muñequita naranja", price: 13, image: "/Muñequita-naranjita.jpg" },
       { id: 53, name: "La Monchi naranja", price: 15, image: "/La-Monchi-naranja.jpg" }
