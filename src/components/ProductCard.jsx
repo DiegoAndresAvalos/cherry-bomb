@@ -3,30 +3,30 @@ import { useCart } from "@/components/CartContext";
 import { useState } from "react";
 
 export default function ProductCard({ product }) {
-  // Control de carrito: alta y baja del mismo producto
   const { addProduct, removeProduct, selectedProducts } = useCart();
   const isSelected = selectedProducts.some((p) => p.id === product.id);
   const [showModal, setShowModal] = useState(false);
 
+  // ESTA ES LA CLAVE: Verificamos si la imagen es válida (no es un espacio vacío)
   const hasImage = product.image && product.image.trim() !== "";
 
-  // Alterna entre agregar y desagregar evitando propagar el clic a la tarjeta
   const handleToggleCart = (e) => {
-    e.stopPropagation(); // Evita clics accidentales si el botón está dentro de otro elemento clicable
+    e.stopPropagation();
     if (isSelected) {
-      removeProduct(product.id); // Si ya está, lo quita
+      removeProduct(product.id);
     } else {
-      addProduct(product); // Si no está, lo agrega
+      addProduct(product);
     }
   };
 
   return (
     <>
-      <div className="bg-white border border-pink-200 rounded-xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-md transition w-64 sm:w-72 shrink-0">
+      <div className="bg-white border border-pink-200 rounded-xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-md transition">
         <div
           className="relative w-full h-72 overflow-hidden rounded-lg flex items-center justify-center cursor-pointer bg-gray-100"
           onClick={() => hasImage && setShowModal(true)}
         >
+          {/* AQUÍ USAMOS LA PROTECCIÓN */}
           {hasImage ? (
             <Image
               src={product.image}
@@ -52,8 +52,8 @@ export default function ProductCard({ product }) {
           onClick={handleToggleCart}
           className={`mt-auto rounded-md py-3 text-sm font-medium transition text-white ${
             isSelected
-              ? "bg-gray-400 hover:bg-gray-500 text-gray-800" // Estado de desagregar en gris
-              : "bg-rose-600 hover:bg-rose-700 text-white" // Estado normal más oscuro
+              ? "bg-red-500 hover:bg-red-600"
+              : "bg-pink-500 hover:bg-pink-600"
           }`}
         >
           {isSelected ? "Desagregar" : "Agregar"}
