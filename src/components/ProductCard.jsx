@@ -72,20 +72,6 @@ export default function ProductCard({ product }) {
             </span>
           )}
         </div>
-        {/* Indicador de stock */}
-        <div className="flex items-center gap-2">
-          {inStock ? (
-            <span className="text-xs text-green-600 font-medium flex items-center gap-1">
-              <span className="w-2 h-2 bg-green-600 rounded-full"></span>
-              En Stock
-            </span>
-          ) : (
-            <span className="text-xs text-red-600 font-medium flex items-center gap-1">
-              <span className="w-2 h-2 bg-red-600 rounded-full"></span>
-              Sin Stock
-            </span>
-          )}
-        </div>
 
         <button
           onClick={handleToggleCart}
