@@ -9,10 +9,13 @@ export default function ProductCard({ product }) {
   const [showModal, setShowModal] = useState(false);
 
   const hasImage = product.image && product.image.trim() !== "";
+  const inStock = product.inStock !== false; // Por defecto true si no está definido
 
   // Alterna entre agregar y desagregar evitando propagar el clic a la tarjeta
   const handleToggleCart = (e) => {
     e.stopPropagation(); // Evita clics accidentales si el botón está dentro de otro elemento clicable
+    if (!inStock) return; // No hace nada si no hay stock
+    
     if (isSelected) {
       removeProduct(product.id); // Si ya está, lo quita
     } else {
@@ -28,12 +31,19 @@ export default function ProductCard({ product }) {
           onClick={() => hasImage && setShowModal(true)}
         >
           {hasImage ? (
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover"
-            />
+            <>
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className={`object-cover ${!inStock ? 'opacity-75' : ''}`}
+              />
+              {!inStock && (
+                <div className="absolute top-8 -right-12 bg-red-600 text-white font-bold py-2 px-16 transform rotate-45 shadow-lg z-10">
+                  AGOTADO
+                </div>
+              )}
+            </>
           ) : (
             <div className="text-gray-400 text-center px-4">
               <span className="block text-2xl mb-2">📷</span>
@@ -47,16 +57,48 @@ export default function ProductCard({ product }) {
         {product.size && (
           <p className="text-xs text-pink-500">Talla: {product.size}</p>
         )}
+        
+        {/* Indicador de stock */}
+        <div className="flex items-center gap-2">
+          {inStock ? (
+            <span className="text-xs text-green-600 font-medium flex items-center gap-1">
+              <span className="w-2 h-2 bg-green-600 rounded-full"></span>
+              En Stock
+            </span>
+          ) : (
+            <span className="text-xs text-red-600 font-medium flex items-center gap-1">
+              <span className="w-2 h-2 bg-red-600 rounded-full"></span>
+              Sin Stock
+            </span>
+          )}
+        </div>
+        {/* Indicador de stock */}
+        <div className="flex items-center gap-2">
+          {inStock ? (
+            <span className="text-xs text-green-600 font-medium flex items-center gap-1">
+              <span className="w-2 h-2 bg-green-600 rounded-full"></span>
+              En Stock
+            </span>
+          ) : (
+            <span className="text-xs text-red-600 font-medium flex items-center gap-1">
+              <span className="w-2 h-2 bg-red-600 rounded-full"></span>
+              Sin Stock
+            </span>
+          )}
+        </div>
 
         <button
           onClick={handleToggleCart}
-          className={`mt-auto rounded-md py-3 text-sm font-medium transition text-white ${
-            isSelected
-              ? "bg-gray-400 hover:bg-gray-500 text-gray-800" // Estado de desagregar en gris
-              : "bg-rose-600 hover:bg-rose-700 text-white" // Estado normal más oscuro
+          disabled={!inStock}
+          className={`mt-auto rounded-md py-3 text-sm font-medium transition ${
+            !inStock
+              ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+              : isSelected
+              ? "bg-gray-400 hover:bg-gray-500 text-gray-800"
+              : "bg-rose-600 hover:bg-rose-700 text-white"
           }`}
         >
-          {isSelected ? "Desagregar" : "Agregar"}
+          {!inStock ? "No Disponible" : isSelected ? "Desagregar" : "Agregar"}
         </button>
       </div>
 
