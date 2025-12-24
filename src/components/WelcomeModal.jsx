@@ -5,15 +5,11 @@ export default function WelcomeModal() {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    // Verificar si es la primera visita
-    const hasVisited = localStorage.getItem("hasVisitedCherryBomb");
-    if (!hasVisited) {
-      setIsOpen(true);
-    }
+    // Mostrar el modal cada vez que se carga la página
+    setIsOpen(true);
   }, []);
 
   const handleClose = () => {
-    localStorage.setItem("hasVisitedCherryBomb", "true");
     setIsOpen(false);
   };
 
