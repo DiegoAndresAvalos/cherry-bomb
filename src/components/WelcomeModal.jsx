@@ -68,12 +68,11 @@ export default function WelcomeModal() {
             <p className="text-sm text-gray-600 mb-3 font-medium">
               🛒 Botón para ver tu canasta:
             </p>
-            <button className="w-full bg-pink-600 hover:bg-pink-700 text-white rounded-md py-3 text-sm font-medium transition flex items-center justify-center gap-2 shadow-md">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              Ver Canasta (0)
-            </button>
+            <div className="flex justify-center">
+              <button className="bg-rose-400 text-rose-950 px-5 py-4 rounded-full shadow-lg hover:bg-rose-500 transition font-semibold flex items-center gap-3 text-base">
+                🛒 <span className="font-bold">0</span>
+              </button>
+            </div>
           </div>
 
           <p className="text-xs text-gray-500 text-center italic">
