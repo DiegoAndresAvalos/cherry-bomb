@@ -50,7 +50,8 @@ export default function WelcomeModal() {
           <p className="text-gray-700 text-center leading-relaxed">
             Nos alegra tenerte aquí. Si te interesa uno de nuestros productos, 
             haz clic en el botón <span className="font-semibold text-rose-600">Agregar</span> y 
-            se agregará a tu canasta para preguntar o consultar algo sobre el producto.
+            se agregará a tu canasta (Que aparecerá en la parte inferior izquierda) para preguntar o 
+            consultar algo sobre el producto.
           </p>
 
           {/* Ejemplo del botón Agregar */}
