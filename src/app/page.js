@@ -8,6 +8,7 @@ import { CartProvider } from "@/components/CartContext";
 import dynamic from "next/dynamic";
 
 const SelectedProductsModal = dynamic(() => import("@/components/SelectedProductsModal"), { ssr: false });
+const WelcomeModal = dynamic(() => import("@/components/WelcomeModal"), { ssr: false });
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       {/* Header y badge flotante de selección */}
       <Header />
       <SelectedProductsModal />
+      <WelcomeModal />
 
       {/* CHICAS */}
       <ProductSection id="chicas-jeans" title="Chicas · Jeans" products={products.chicas.jeans} />
