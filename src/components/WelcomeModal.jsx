@@ -20,8 +20,8 @@ export default function WelcomeModal() {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-br from-pink-50 to-white rounded-2xl shadow-2xl max-w-lg w-full p-8 relative animate-fadeIn">
+    <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6">
+      <div className="bg-gradient-to-br from-pink-50 to-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 relative animate-fadeIn max-h-[90vh] overflow-y-auto">
         {/* Botón cerrar */}
         <button
           onClick={handleClose}
