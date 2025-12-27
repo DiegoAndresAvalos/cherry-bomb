@@ -84,7 +84,7 @@ export default function ProductCard({ product }) {
               : "bg-rose-600 hover:bg-rose-700 text-white"
           }`}
         >
-          {!inStock ? "No Disponible" : isSelected ? "Desagregar" : "Agregar"}
+          {!inStock ? "No Disponible" : isSelected ? "Quitar" : "Consultar"}
         </button>
       </div>
 

@@ -49,18 +49,18 @@ export default function WelcomeModal() {
         <div className="space-y-6">
           <p className="text-gray-700 text-center leading-relaxed">
             Nos alegra tenerte aquí. Si te interesa uno de nuestros productos, 
-            haz clic en el botón <span className="font-semibold text-rose-600">Agregar</span> y 
+            haz clic en el botón <span className="font-semibold text-rose-600">Consultar</span> y 
             se agregará a tu canasta (que aparecerá en la parte inferior derecha) para realizar consultas 
             o solicitar más información.
           </p>
 
-          {/* Ejemplo del botón Agregar */}
+          {/* Ejemplo del botón Consultar */}
           <div className="bg-white rounded-xl p-4 shadow-sm border border-pink-100">
             <p className="text-sm text-gray-600 mb-3 font-medium">
-              👉 Botón para agregar productos:
+              👉 Botón para consultar productos:
             </p>
             <button className="w-full bg-rose-600 hover:bg-rose-700 text-white rounded-md py-3 text-sm font-medium transition shadow-md">
-              Agregar
+              Consultar
             </button>
           </div>
 
@@ -84,7 +84,7 @@ export default function WelcomeModal() {
         {/* Botón de continuar */}
         <button
           onClick={handleClose}
-          className="mt-6 w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white rounded-lg py-3 font-semibold transition shadow-lg"
+          className="mt-6 w-full bg-gradient-to-r from-pink-200 to-rose-200 hover:from-pink-300 hover:to-rose-300 text-rose-700 rounded-lg py-3 font-semibold transition shadow-lg"
         >
           ¡Entendido, vamos a comprar! 🎉
         </button>
