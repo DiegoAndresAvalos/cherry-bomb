@@ -84,7 +84,7 @@ export default function WelcomeModal() {
         {/* Botón de continuar */}
         <button
           onClick={handleClose}
-          className="mt-6 w-full bg-gradient-to-r from-pink-200 to-rose-200 hover:from-pink-300 hover:to-rose-300 text-rose-700 rounded-lg py-3 font-semibold transition shadow-lg"
+          className="mt-6 w-full bg-rose-600 hover:bg-rose-700 text-white rounded-lg py-3 font-semibold transition shadow-md"
         >
           ¡Entendido, vamos a comprar! 🎉
         </button>
