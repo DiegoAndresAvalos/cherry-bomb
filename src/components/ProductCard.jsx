@@ -106,50 +106,52 @@ export default function ProductCard({ product }) {
           style={{ zIndex: 999999 }}
           onClick={() => setShowModal(false)}
         >
-          {/* Botón X para cerrar - FUERA del contenedor, siempre visible */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowModal(false);
-            }}
-            className="fixed top-4 right-4 sm:top-8 sm:right-8 text-white hover:text-rose-400 transition bg-rose-600 hover:bg-rose-700 rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-2xl border-4 border-white"
-            style={{ zIndex: 1000000 }}
-            aria-label="Cerrar imagen"
-          >
-            <svg
-              className="w-8 h-8 sm:w-10 sm:h-10"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              strokeWidth={3}
+          {/* Contenedor principal con botón y contenido */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {/* Botón X para cerrar - Posición absoluta dentro del modal */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowModal(false);
+              }}
+              className="absolute top-4 right-4 sm:top-8 sm:right-8 text-white hover:text-rose-400 transition bg-rose-600 hover:bg-rose-700 rounded-full w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center shadow-2xl border-4 border-white z-50"
+              aria-label="Cerrar imagen"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          
-          {/* Contenedor de imagen con tamaño controlado */}
-          <div 
-            className="relative bg-white rounded-lg shadow-2xl p-3 sm:p-6 w-full max-w-2xl sm:max-w-3xl mx-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center justify-center">
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={800}
-                height={800}
-                className="object-contain w-full h-auto max-h-[55vh] sm:max-h-[60vh]"
-                priority
-              />
+              <svg
+                className="w-8 h-8 sm:w-10 sm:h-10"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            
+            {/* Contenedor de imagen con tamaño controlado */}
+            <div 
+              className="relative bg-white rounded-lg shadow-2xl p-3 sm:p-6 w-full max-w-2xl sm:max-w-3xl mx-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-center">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={800}
+                  height={800}
+                  className="object-contain w-full h-auto max-h-[55vh] sm:max-h-[60vh]"
+                  priority
+                />
+              </div>
+              {/* Nombre del producto debajo de la imagen */}
+              <p className="text-center mt-3 sm:mt-4 text-gray-800 font-semibold text-sm sm:text-base">
+                {product.name}
+              </p>
             </div>
-            {/* Nombre del producto debajo de la imagen */}
-            <p className="text-center mt-3 sm:mt-4 text-gray-800 font-semibold text-sm sm:text-base">
-              {product.name}
-            </p>
           </div>
         </div>
       )}
