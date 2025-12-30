@@ -1,12 +1,24 @@
 import Image from "next/image";
 import { useCart } from "@/components/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProductCard({ product }) {
   // Control de carrito: alta y baja del mismo producto
   const { addProduct, removeProduct, selectedProducts } = useCart();
   const isSelected = selectedProducts.some((p) => p.id === product.id);
   const [showModal, setShowModal] = useState(false);
+
+  // Bloquear scroll cuando el modal está abierto
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [showModal]);
 
   const hasImage = product.image && product.image.trim() !== "";
   const inStock = product.inStock !== false; // Por defecto true si no está definido
@@ -90,17 +102,39 @@ export default function ProductCard({ product }) {
 
       {showModal && hasImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
           onClick={() => setShowModal(false)}
         >
-          <div className="max-w-lg max-h-lg p-4 bg-white rounded-lg">
-            <Image
-              src={product.image}
-              alt={product.name}
-              width={400}
-              height={400}
-              className="object-contain"
-            />
+          <div className="relative max-w-lg max-h-[90vh] bg-white rounded-lg p-4" onClick={(e) => e.stopPropagation()}>
+            {/* Botón X para cerrar */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute -top-10 right-0 sm:top-2 sm:right-2 text-white sm:text-gray-400 hover:text-gray-600 transition bg-black/50 sm:bg-white rounded-full w-10 h-10 flex items-center justify-center z-10"
+              aria-label="Cerrar imagen"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <div className="max-h-[80vh] overflow-auto">
+              <Image
+                src={product.image}
+                alt={product.name}
+                width={400}
+                height={400}
+                className="object-contain w-full h-auto"
+              />
+            </div>
           </div>
         </div>
       )}

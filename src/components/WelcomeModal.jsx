@@ -9,6 +9,18 @@ export default function WelcomeModal() {
     setIsOpen(true);
   }, []);
 
+  // Bloquear scroll cuando el modal está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   const handleClose = () => {
     setIsOpen(false);
   };
