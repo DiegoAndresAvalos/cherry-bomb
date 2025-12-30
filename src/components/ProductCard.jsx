@@ -102,7 +102,7 @@ export default function ProductCard({ product }) {
 
       {showModal && hasImage && (
         <div
-          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-[9999] p-4 sm:p-8"
+          className="fixed inset-0 bg-black flex items-center justify-center z-[99999] p-4 sm:p-8"
           onClick={() => setShowModal(false)}
         >
           <div className="relative w-full max-w-4xl h-full max-h-[90vh] flex items-center justify-center">
@@ -112,7 +112,7 @@ export default function ProductCard({ product }) {
                 e.stopPropagation();
                 setShowModal(false);
               }}
-              className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 transition bg-rose-600 hover:bg-rose-700 rounded-full w-12 h-12 flex items-center justify-center z-[10000] shadow-xl"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 transition bg-rose-600 hover:bg-rose-700 rounded-full w-12 h-12 flex items-center justify-center z-[100000] shadow-xl"
               aria-label="Cerrar imagen"
             >
               <svg
