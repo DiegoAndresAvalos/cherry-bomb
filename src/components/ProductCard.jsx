@@ -102,38 +102,53 @@ export default function ProductCard({ product }) {
 
       {showModal && hasImage && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-[9999] p-4 sm:p-8"
           onClick={() => setShowModal(false)}
         >
-          <div className="relative w-full max-w-2xl max-h-[90vh]">
-            {/* Botón X para cerrar - fijo en esquina superior derecha */}
+          <div className="relative w-full max-w-4xl h-full max-h-[90vh] flex items-center justify-center">
+            {/* Botón X para cerrar - visible en todas las pantallas */}
             <button
-              onClick={() => setShowModal(false)}
-              className="absolute -top-3 -right-3 text-white hover:text-gray-300 transition bg-black/70 hover:bg-black/90 rounded-full w-10 h-10 flex items-center justify-center z-20 shadow-lg"
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowModal(false);
+              }}
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-gray-300 transition bg-rose-600 hover:bg-rose-700 rounded-full w-12 h-12 flex items-center justify-center z-[10000] shadow-xl"
               aria-label="Cerrar imagen"
             >
               <svg
-                className="w-6 h-6"
+                className="w-7 h-7"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                strokeWidth={3}
               >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth={2}
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
             </button>
-            <div className="bg-white rounded-lg p-4 max-h-[85vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={600}
-                height={600}
-                className="object-contain w-auto h-auto max-w-full max-h-[80vh] mx-auto"
-              />
+            
+            {/* Contenedor de imagen con tamaño controlado */}
+            <div 
+              className="relative bg-white rounded-lg shadow-2xl p-4 sm:p-6 max-w-full max-h-full overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-center max-h-[75vh] sm:max-h-[80vh]">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  width={800}
+                  height={800}
+                  className="object-contain max-h-[70vh] sm:max-h-[75vh] w-auto"
+                  priority
+                />
+              </div>
+              {/* Nombre del producto debajo de la imagen */}
+              <p className="text-center mt-4 text-gray-800 font-semibold text-sm sm:text-base">
+                {product.name}
+              </p>
             </div>
           </div>
         </div>
