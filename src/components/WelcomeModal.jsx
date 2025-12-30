@@ -30,7 +30,6 @@ export default function WelcomeModal() {
   return (
     <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50 p-4 sm:p-6">
       <div className="bg-gradient-to-br from-pink-50 to-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 relative animate-fadeIn max-h-[90vh] overflow-y-auto">
-        {/* Contenido */
         <div className="text-center mb-6">
           <h2 className="text-3xl font-bold text-pink-600 mb-2">
             ¡Bienvenido a Cherry Bomb! 🍒
