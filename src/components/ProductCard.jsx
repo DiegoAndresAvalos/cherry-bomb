@@ -105,11 +105,11 @@ export default function ProductCard({ product }) {
           className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
           onClick={() => setShowModal(false)}
         >
-          <div className="relative max-w-lg max-h-[90vh] bg-white rounded-lg p-4" onClick={(e) => e.stopPropagation()}>
-            {/* Botón X para cerrar */}
+          <div className="relative w-full max-w-3xl">
+            {/* Botón X para cerrar - fijo en esquina superior derecha */}
             <button
               onClick={() => setShowModal(false)}
-              className="absolute -top-10 right-0 sm:top-2 sm:right-2 text-white sm:text-gray-400 hover:text-gray-600 transition bg-black/50 sm:bg-white rounded-full w-10 h-10 flex items-center justify-center z-10"
+              className="absolute top-0 right-0 sm:-top-12 sm:right-0 text-white hover:text-gray-300 transition bg-black/60 hover:bg-black/80 rounded-full w-10 h-10 flex items-center justify-center z-20 shadow-lg"
               aria-label="Cerrar imagen"
             >
               <svg
@@ -126,12 +126,12 @@ export default function ProductCard({ product }) {
                 />
               </svg>
             </button>
-            <div className="max-h-[80vh] overflow-auto">
+            <div className="bg-white rounded-lg p-4 max-h-[90vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
               <Image
                 src={product.image}
                 alt={product.name}
-                width={400}
-                height={400}
+                width={800}
+                height={800}
                 className="object-contain w-full h-auto"
               />
             </div>
