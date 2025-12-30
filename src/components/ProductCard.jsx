@@ -102,7 +102,7 @@ export default function ProductCard({ product }) {
 
       {showModal && hasImage && (
         <div
-          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black flex items-center justify-center p-4 sm:p-8"
+          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black flex items-center justify-center p-6 sm:p-12 sm:pt-24"
           style={{ zIndex: 999999 }}
           onClick={() => setShowModal(false)}
         >
@@ -133,7 +133,7 @@ export default function ProductCard({ product }) {
           
           {/* Contenedor de imagen con tamaño controlado */}
           <div 
-            className="relative bg-white rounded-lg shadow-2xl p-3 sm:p-6 w-full max-w-3xl"
+            className="relative bg-white rounded-lg shadow-2xl p-3 sm:p-6 w-full max-w-2xl sm:max-w-3xl mx-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-center">
@@ -142,7 +142,7 @@ export default function ProductCard({ product }) {
                 alt={product.name}
                 width={800}
                 height={800}
-                className="object-contain w-full h-auto max-h-[60vh] sm:max-h-[70vh]"
+                className="object-contain w-full h-auto max-h-[55vh] sm:max-h-[60vh]"
                 priority
               />
             </div>
