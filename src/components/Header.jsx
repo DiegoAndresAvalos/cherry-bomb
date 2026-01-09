@@ -24,30 +24,18 @@ export default function Header() {
 
   return (
     <>
-      {/* BARRA DECORATIVA SUPERIOR TIPO "CANDY CANE" */}
-      <div 
-        className="h-2 w-full sticky top-0 z-50"
-        style={{
-          background: "repeating-linear-gradient(45deg, #ef4444, #ef4444 10px, #ffffff 10px, #ffffff 20px)"
-        }}
-      />
-
       {/* HEADER PRINCIPAL */}
-      <header className="bg-[#FADAD7] sticky top-2 z-40 shadow-lg transition-all relative">
+      <header className="bg-[#FADAD7] sticky top-0 z-40 shadow-lg transition-all relative">
         <div className="max-w-7xl mx-auto px-4 h-28 flex items-center justify-between">
 
-          {/* LOGO CON GORRITO DE SANTA */}
+          {/* LOGO */}
           <a href="#top" className="relative group">
-            <span className="absolute -top-5 -left-4 text-4xl z-10 drop-shadow-md rotate-[-15deg] group-hover:rotate-[-25deg] transition-transform duration-300">
-              🎅
-            </span>
             <Image
               src="/Logo_CHERRY_BOMB.png"
               alt="Cherry Bomb"
               width={140}
               height={75}
               priority
-              className="relative z-0"
             />
           </a>
 
@@ -113,7 +101,7 @@ export default function Header() {
             className="lg:hidden text-3xl text-pink-600 flex items-center gap-1"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
-            <span className="text-xl">🎄</span> ☰
+            ☰
           </button>
         </div>
 
@@ -184,7 +172,7 @@ function MenuDropdown({ label, open, onClick, close, items }) {
         className="flex items-center gap-1 hover:text-pink-600 transition-colors"
       >
         {label}
-        <span className="text-xs">{open ? "❄️" : "▼"}</span>
+        <span className="text-xs">{open ? "▲" : "▼"}</span>
       </button>
 
       {open && (

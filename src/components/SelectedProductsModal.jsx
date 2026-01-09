@@ -1,6 +1,7 @@
 "use client";
 import { useCart } from "@/components/CartContext";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function SelectedProductsModal() {
   const { selectedProducts, removeProduct, clearCart } = useCart();
@@ -12,16 +13,25 @@ export default function SelectedProductsModal() {
   // Construye el mensaje y abre WhatsApp con la lista de deseos
   const sendWhatsApp = () => {
     const productList = selectedProducts
-      .map((p) => `• ${p.name} - S/${p.price}${p.size ? ` (Talla ${p.size})` : ""}`)
-      .join("\n");
+      .map((p, index) => {
+        const productInfo = `${index + 1}. ${p.name} - S/${p.price}${p.size ? ` (Talla ${p.size})` : ""}`;
+        // Si el producto tiene imagen, agregamos el enlace completo
+        if (p.image) {
+          const fullImageUrl = p.image.startsWith('http') 
+            ? p.image 
+            : `${window.location.origin}${p.image}`;
+          return `${productInfo}\n   📷 Imagen: ${fullImageUrl}`;
+        }
+        return productInfo;
+      })
+      .join("\n\n");
 
     const finalMessage = `
 Hola, estoy interesado en los siguientes productos:
 
 ${productList}
 
-Mensaje adicional:
-${message}
+${message ? `Mensaje adicional:\n${message}` : ''}
     `;
 
     const phone = "51934529189";
@@ -61,19 +71,35 @@ ${message}
             </div>
 
             {/* LISTA DE PRODUCTOS */}
-            <ul className="space-y-3 max-h-60 overflow-auto bg-rose-50/60 p-4 rounded-lg border border-rose-100">
+            <ul className="space-y-3 max-h-80 overflow-auto bg-rose-50/60 p-4 rounded-lg border border-rose-100">
               {selectedProducts.map((p) => (
-                <li key={p.id} className="flex justify-between items-start text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0">
-                  <div className="flex-1 pr-2">
+                <li key={p.id} className="flex gap-3 items-start text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0">
+                  {/* IMAGEN DEL PRODUCTO */}
+                  {p.image && (
+                    <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-rose-200">
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
+                    </div>
+                  )}
+                  
+                  {/* INFO DEL PRODUCTO */}
+                  <div className="flex-1 min-w-0">
                     <span className="font-semibold block text-gray-800">{p.name}</span>
-                    <div className="flex items-center gap-2 mt-1">
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
                       <span className="text-rose-500 font-medium">S/{p.price}</span>
                       {p.size && <span className="text-gray-500 text-xs bg-white px-2 py-0.5 rounded border border-rose-100">Talla {p.size}</span>}
                     </div>
                   </div>
+                  
+                  {/* BOTÓN REMOVER */}
                   <button
                     onClick={() => removeProduct(p.id)}
-                    className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                    className="text-gray-400 hover:text-red-500 transition-colors p-1 flex-shrink-0"
                     aria-label={`Remover ${p.name}`}
                   >
                     ✕
