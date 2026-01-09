@@ -4,10 +4,9 @@ import { useState, useEffect } from "react";
 import Toast from "@/components/Toast";
 
 export default function ProductCard({ product }) {
-  // Control de carrito con nuevo sistema de cantidades
-  const { addProduct, removeProduct, isInCart, getProductQuantity } = useCart();
-  const isSelected = isInCart(product.id);
-  const quantity = getProductQuantity(product.id);
+  // Control de carrito simple (lista de deseos)
+  const { addProduct, removeProduct, selectedProducts } = useCart();
+  const isSelected = selectedProducts.some((p) => p.id === product.id);
   
   const [showModal, setShowModal] = useState(false);
   const [showToast, setShowToast] = useState(false);
@@ -35,7 +34,7 @@ export default function ProductCard({ product }) {
     if (isSelected) {
       removeProduct(product.id); // Quita completamente
     } else {
-      addProduct(product); // Agrega con quantity: 1
+      addProduct(product); // Agrega a la lista
       setShowToast(true); // Muestra notificación
     }
   };
@@ -103,8 +102,8 @@ export default function ProductCard({ product }) {
           <p className="text-xs text-pink-500">Talla: {product.size}</p>
         )}
         
-        {/* Indicador de stock y cantidad en carrito */}
-        <div className="flex items-center justify-between gap-2">
+        {/* Indicador de stock */}
+        <div className="flex items-center gap-2">
           {inStock ? (
             <span className="text-xs text-green-600 font-medium flex items-center gap-1">
               <span className="w-2 h-2 bg-green-600 rounded-full"></span>
@@ -114,13 +113,6 @@ export default function ProductCard({ product }) {
             <span className="text-xs text-red-600 font-medium flex items-center gap-1">
               <span className="w-2 h-2 bg-red-600 rounded-full"></span>
               Sin Stock
-            </span>
-          )}
-          
-          {/* Muestra la cantidad si está en el carrito */}
-          {quantity > 0 && (
-            <span className="text-xs font-semibold text-rose-600 bg-rose-100 px-2 py-1 rounded-full">
-              {quantity} en carrito
             </span>
           )}
         </div>

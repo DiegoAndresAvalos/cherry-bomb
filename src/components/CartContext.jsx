@@ -6,7 +6,7 @@ const CartContext = createContext();
 const CART_STORAGE_KEY = "cherry-bomb-cart";
 
 export function CartProvider({ children }) {
-  // Estructura: [{ product: {...}, quantity: 1 }, ...]
+  // Lista simple de productos (sin cantidades)
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -36,63 +36,22 @@ export function CartProvider({ children }) {
   }, [selectedProducts, isHydrated]);
 
   /**
-   * Agrega un producto al carrito.
-   * Si ya existe, incrementa su cantidad en 1.
-   * Si no existe, lo agrega con quantity: 1.
+   * Agrega un producto a la lista si no existe.
+   * Evita duplicados.
    */
   const addProduct = (product) => {
     setSelectedProducts((prev) => {
-      const existingIndex = prev.findIndex((item) => item.product.id === product.id);
-      
-      if (existingIndex !== -1) {
-        // Ya existe: incrementar cantidad
-        const updated = [...prev];
-        updated[existingIndex] = {
-          ...updated[existingIndex],
-          quantity: updated[existingIndex].quantity + 1,
-        };
-        return updated;
-      } else {
-        // No existe: agregar nuevo
-        return [...prev, { product, quantity: 1 }];
-      }
+      const exists = prev.find((p) => p.id === product.id);
+      if (exists) return prev; // Ya existe, no hace nada
+      return [...prev, product]; // Agrega el nuevo producto
     });
   };
 
   /**
-   * Incrementa la cantidad de un producto específico
-   */
-  const increaseQuantity = (productId) => {
-    setSelectedProducts((prev) => {
-      return prev.map((item) =>
-        item.product.id === productId
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-    });
-  };
-
-  /**
-   * Decrementa la cantidad de un producto.
-   * Si llega a 0, lo elimina del carrito.
-   */
-  const decreaseQuantity = (productId) => {
-    setSelectedProducts((prev) => {
-      return prev
-        .map((item) =>
-          item.product.id === productId
-            ? { ...item, quantity: Math.max(0, item.quantity - 1) }
-            : item
-        )
-        .filter((item) => item.quantity > 0);
-    });
-  };
-
-  /**
-   * Elimina completamente un producto del carrito (sin importar cantidad)
+   * Elimina un producto de la lista por ID
    */
   const removeProduct = (productId) => {
-    setSelectedProducts((prev) => prev.filter((item) => item.product.id !== productId));
+    setSelectedProducts((prev) => prev.filter((p) => p.id !== productId));
   };
 
   /**
@@ -102,40 +61,13 @@ export function CartProvider({ children }) {
     setSelectedProducts([]);
   };
 
-  /**
-   * Verifica si un producto está en el carrito
-   */
-  const isInCart = (productId) => {
-    return selectedProducts.some((item) => item.product.id === productId);
-  };
-
-  /**
-   * Obtiene la cantidad de un producto específico
-   */
-  const getProductQuantity = (productId) => {
-    const item = selectedProducts.find((item) => item.product.id === productId);
-    return item ? item.quantity : 0;
-  };
-
-  /**
-   * Obtiene el total de items (suma de todas las cantidades)
-   */
-  const getTotalItems = () => {
-    return selectedProducts.reduce((total, item) => total + item.quantity, 0);
-  };
-
   return (
     <CartContext.Provider
       value={{
         selectedProducts,
         addProduct,
-        increaseQuantity,
-        decreaseQuantity,
         removeProduct,
         clearCart,
-        isInCart,
-        getProductQuantity,
-        getTotalItems,
       }}
     >
       {children}

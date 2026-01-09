@@ -4,33 +4,21 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function SelectedProductsModal() {
-  const { 
-    selectedProducts, 
-    increaseQuantity, 
-    decreaseQuantity, 
-    removeProduct, 
-    clearCart,
-    getTotalItems 
-  } = useCart();
+  const { selectedProducts, removeProduct, clearCart } = useCart();
   
   const [message, setMessage] = useState("");
   const [open, setOpen] = useState(false);
 
-  const totalItems = getTotalItems();
-
-  if (totalItems === 0) return null;
+  if (selectedProducts.length === 0) return null;
 
   /**
-   * Construye un mensaje optimizado para WhatsApp con cantidades
+   * Construye un mensaje simple para WhatsApp sin cantidades
    */
   const sendWhatsApp = () => {
     const productList = selectedProducts
-      .map((item, index) => {
-        const { product, quantity } = item;
-        // Formato compacto: "2x Blusa Roja - S/45.00 (Talla M)"
-        const quantityText = quantity > 1 ? `${quantity}x ` : "";
+      .map((product, index) => {
         const sizeText = product.size ? ` (Talla ${product.size})` : "";
-        const productInfo = `${index + 1}. ${quantityText}${product.name} - S/${product.price}${sizeText}`;
+        const productInfo = `${index + 1}. ${product.name} - S/${product.price}${sizeText}`;
         
         // Agrega imagen si está disponible
         if (product.image) {
@@ -66,9 +54,9 @@ _¡Gracias por tu interés!_
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-6 right-6 bg-rose-400 text-rose-950 px-5 py-4 rounded-full shadow-lg z-50 hover:bg-rose-500 transition font-semibold flex items-center gap-3 text-base"
-        aria-label={`Ver carrito con ${totalItems} productos`}
+        aria-label={`Ver carrito con ${selectedProducts.length} productos`}
       >
-        🛒 <span className="font-bold">{totalItems}</span>
+        🛒 <span className="font-bold">{selectedProducts.length}</span>
       </button>
 
       {/* Modal del carrito */}
@@ -91,74 +79,50 @@ _¡Gracias por tu interés!_
               </p>
             </div>
 
-            {/* LISTA DE PRODUCTOS CON CANTIDADES */}
+            {/* LISTA DE PRODUCTOS */}
             <ul className="space-y-3 max-h-80 overflow-auto bg-rose-50/60 p-4 rounded-lg border border-rose-100">
-              {selectedProducts.map((item) => {
-                const { product, quantity } = item;
-                return (
-                  <li key={product.id} className="flex gap-3 items-start text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0">
-                    {/* IMAGEN DEL PRODUCTO */}
-                    {product.image && (
-                      <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-rose-200">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          className="object-cover"
-                          sizes="64px"
-                        />
-                      </div>
-                    )}
-                    
-                    {/* INFO DEL PRODUCTO */}
-                    <div className="flex-1 min-w-0">
-                      <span className="font-semibold block text-gray-800">{product.name}</span>
-                      <div className="flex items-center gap-2 mt-1 flex-wrap">
-                        <span className="text-rose-500 font-medium">S/{product.price}</span>
-                        {product.size && (
-                          <span className="text-gray-500 text-xs bg-white px-2 py-0.5 rounded border border-rose-100">
-                            Talla {product.size}
-                          </span>
-                        )}
-                      </div>
-                      
-                      {/* CONTROL DE CANTIDAD */}
-                      <div className="flex items-center gap-2 mt-2">
-                        <button
-                          onClick={() => decreaseQuantity(product.id)}
-                          className="w-6 h-6 flex items-center justify-center bg-rose-200 hover:bg-rose-300 text-rose-700 rounded-full font-bold transition"
-                          aria-label="Disminuir cantidad"
-                        >
-                          −
-                        </button>
-                        <span className="font-semibold text-gray-800 min-w-8 text-center">
-                          {quantity}
-                        </span>
-                        <button
-                          onClick={() => increaseQuantity(product.id)}
-                          className="w-6 h-6 flex items-center justify-center bg-rose-200 hover:bg-rose-300 text-rose-700 rounded-full font-bold transition"
-                          aria-label="Aumentar cantidad"
-                        >
-                          +
-                        </button>
-                      </div>
+              {selectedProducts.map((product) => (
+                <li key={product.id} className="flex gap-3 items-start text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0">
+                  {/* IMAGEN DEL PRODUCTO */}
+                  {product.image && (
+                    <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-rose-200">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover"
+                        sizes="64px"
+                      />
                     </div>
-                    
-                    {/* BOTÓN REMOVER */}
-                    <button
-                      onClick={() => removeProduct(product.id)}
-                      className="text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0"
-                      aria-label={`Remover ${product.name}`}
-                    >
-                      ✕
-                    </button>
-                  </li>
-                );
-              })}
+                  )}
+                  
+                  {/* INFO DEL PRODUCTO */}
+                  <div className="flex-1 min-w-0">
+                    <span className="font-semibold block text-gray-800">{product.name}</span>
+                    <div className="flex items-center gap-2 mt-1 flex-wrap">
+                      <span className="text-rose-500 font-medium">S/{product.price}</span>
+                      {product.size && (
+                        <span className="text-gray-500 text-xs bg-white px-2 py-0.5 rounded border border-rose-100">
+                          Talla {product.size}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  
+                  {/* BOTÓN REMOVER */}
+                  <button
+                    onClick={() => removeProduct(product.id)}
+                    className="text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0"
+                    aria-label={`Remover ${product.name}`}
+                  >
+                    ✕
+                  </button>
+                </li>
+              ))}
             </ul>
 
             {/* BOTÓN VACIAR */}
-            {totalItems > 0 && (
+            {selectedProducts.length > 0 && (
               <div className="flex justify-end">
                 <button
                   onClick={() => {
@@ -191,7 +155,7 @@ _¡Gracias por tu interés!_
             <button
               onClick={sendWhatsApp}
               className="w-full bg-emerald-400 text-emerald-950 py-3.5 rounded-lg hover:bg-emerald-500 font-semibold transition text-base shadow-md hover:shadow-lg flex items-center justify-center gap-2"
-              disabled={totalItems === 0}
+              disabled={selectedProducts.length === 0}
             >
               <span>Consultar por WhatsApp</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-emerald-900">
