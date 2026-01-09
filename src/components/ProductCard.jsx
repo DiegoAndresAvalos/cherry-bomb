@@ -1,12 +1,16 @@
 import Image from "next/image";
 import { useCart } from "@/components/CartContext";
 import { useState, useEffect } from "react";
+import Toast from "@/components/Toast";
 
 export default function ProductCard({ product }) {
-  // Control de carrito: alta y baja del mismo producto
-  const { addProduct, removeProduct, selectedProducts } = useCart();
-  const isSelected = selectedProducts.some((p) => p.id === product.id);
+  // Control de carrito con nuevo sistema de cantidades
+  const { addProduct, removeProduct, isInCart, getProductQuantity } = useCart();
+  const isSelected = isInCart(product.id);
+  const quantity = getProductQuantity(product.id);
+  
   const [showModal, setShowModal] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   // Bloquear scroll cuando el modal está abierto
   useEffect(() => {
@@ -23,24 +27,53 @@ export default function ProductCard({ product }) {
   const hasImage = product.image && product.image.trim() !== "";
   const inStock = product.inStock !== false; // Por defecto true si no está definido
 
-  // Alterna entre agregar y desagregar evitando propagar el clic a la tarjeta
+  // Maneja agregar/quitar del carrito con feedback visual
   const handleToggleCart = (e) => {
-    e.stopPropagation(); // Evita clics accidentales si el botón está dentro de otro elemento clicable
-    if (!inStock) return; // No hace nada si no hay stock
+    e.stopPropagation();
+    if (!inStock) return;
     
     if (isSelected) {
-      removeProduct(product.id); // Si ya está, lo quita
+      removeProduct(product.id); // Quita completamente
     } else {
-      addProduct(product); // Si no está, lo agrega
+      addProduct(product); // Agrega con quantity: 1
+      setShowToast(true); // Muestra notificación
+    }
+  };
+
+  // Maneja el clic en la imagen para abrir modal
+  const handleImageClick = () => {
+    if (hasImage) {
+      setShowModal(true);
+    }
+  };
+
+  // Maneja eventos de teclado para accesibilidad (Enter o Espacio)
+  const handleImageKeyDown = (e) => {
+    if (hasImage && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      setShowModal(true);
     }
   };
 
   return (
     <>
+      {/* Toast de notificación */}
+      <Toast 
+        message="¡Agregado al carrito! 🍒" 
+        isVisible={showToast} 
+        onClose={() => setShowToast(false)} 
+      />
+
       <div className="bg-white border border-pink-200 rounded-xl p-4 flex flex-col gap-3 shadow-sm hover:shadow-md transition w-64 sm:w-72 shrink-0">
+        {/* Contenedor de imagen con accesibilidad mejorada */}
         <div
-          className="relative w-full h-72 overflow-hidden rounded-lg flex items-center justify-center cursor-pointer bg-gray-100"
-          onClick={() => hasImage && setShowModal(true)}
+          className="relative w-full h-72 overflow-hidden rounded-lg flex items-center justify-center bg-gray-100"
+          onClick={handleImageClick}
+          onKeyDown={handleImageKeyDown}
+          role={hasImage ? "button" : undefined}
+          tabIndex={hasImage ? 0 : undefined}
+          aria-label={hasImage ? `Ver imagen ampliada de ${product.name}` : undefined}
+          style={{ cursor: hasImage ? 'pointer' : 'default' }}
         >
           {hasImage ? (
             <>
@@ -70,8 +103,8 @@ export default function ProductCard({ product }) {
           <p className="text-xs text-pink-500">Talla: {product.size}</p>
         )}
         
-        {/* Indicador de stock */}
-        <div className="flex items-center gap-2">
+        {/* Indicador de stock y cantidad en carrito */}
+        <div className="flex items-center justify-between gap-2">
           {inStock ? (
             <span className="text-xs text-green-600 font-medium flex items-center gap-1">
               <span className="w-2 h-2 bg-green-600 rounded-full"></span>
@@ -81,6 +114,13 @@ export default function ProductCard({ product }) {
             <span className="text-xs text-red-600 font-medium flex items-center gap-1">
               <span className="w-2 h-2 bg-red-600 rounded-full"></span>
               Sin Stock
+            </span>
+          )}
+          
+          {/* Muestra la cantidad si está en el carrito */}
+          {quantity > 0 && (
+            <span className="text-xs font-semibold text-rose-600 bg-rose-100 px-2 py-1 rounded-full">
+              {quantity} en carrito
             </span>
           )}
         </div>
@@ -100,18 +140,22 @@ export default function ProductCard({ product }) {
         </button>
       </div>
 
+      {/* Modal de imagen ampliada */}
       {showModal && hasImage && (
         <div
           className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen bg-black flex items-center justify-center p-6 sm:p-12 sm:pt-24"
           style={{ zIndex: 999999 }}
           onClick={() => setShowModal(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Vista ampliada de ${product.name}`}
         >
           {/* Contenedor de imagen con tamaño controlado */}
           <div 
             className="relative bg-white rounded-lg shadow-2xl p-3 sm:p-6 w-full max-w-2xl sm:max-w-3xl mx-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón X para cerrar - Dentro del contenedor de imagen */}
+            {/* Botón X para cerrar */}
             <button
               onClick={(e) => {
                 e.stopPropagation();

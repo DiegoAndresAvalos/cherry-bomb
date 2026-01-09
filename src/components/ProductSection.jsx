@@ -30,7 +30,7 @@ export default function ProductSection({ id, title, products, bgColor = "bg-whit
           </h2>
         </div>
 
-        {/* Carrusel horizontal */}
+        {/* Carrusel horizontal con indicador de scroll */}
         <div className="relative">
           {hasOverflow && (
             <button
@@ -43,15 +43,23 @@ export default function ProductSection({ id, title, products, bgColor = "bg-whit
             </button>
           )}
 
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto pb-4 pr-2 snap-x snap-mandatory no-scrollbar"
-          >
-            {products.map(product => (
-              <div key={product.id} className="snap-start">
-                <ProductCard product={product} />
-              </div>
-            ))}
+          {/* Contenedor de productos con gradiente indicador para móvil */}
+          <div className="relative">
+            <div
+              ref={scrollRef}
+              className="flex gap-6 overflow-x-auto pb-4 pr-2 snap-x snap-mandatory no-scrollbar"
+            >
+              {products.map(product => (
+                <div key={product.id} className="snap-start">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+            
+            {/* Indicador de scroll para móvil (solo si hay más productos) */}
+            {hasOverflow && (
+              <div className="md:hidden absolute right-0 top-0 bottom-4 w-16 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none" />
+            )}
           </div>
 
           {hasOverflow && (

@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <>
       {/* HEADER PRINCIPAL */}
-      <header className="bg-[#FADAD7] sticky top-0 z-40 shadow-lg transition-all relative">
+      <header className="bg-[#FADAD7] sticky top-0 z-40 shadow-lg transition-all">
         <div className="max-w-7xl mx-auto px-4 h-28 flex items-center justify-between">
 
           {/* LOGO */}

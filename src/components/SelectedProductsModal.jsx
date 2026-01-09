@@ -4,35 +4,53 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function SelectedProductsModal() {
-  const { selectedProducts, removeProduct, clearCart } = useCart();
+  const { 
+    selectedProducts, 
+    increaseQuantity, 
+    decreaseQuantity, 
+    removeProduct, 
+    clearCart,
+    getTotalItems 
+  } = useCart();
+  
   const [message, setMessage] = useState("");
   const [open, setOpen] = useState(false);
 
-  if (selectedProducts.length === 0) return null;
+  const totalItems = getTotalItems();
 
-  // Construye el mensaje y abre WhatsApp con la lista de deseos
+  if (totalItems === 0) return null;
+
+  /**
+   * Construye un mensaje optimizado para WhatsApp con cantidades
+   */
   const sendWhatsApp = () => {
     const productList = selectedProducts
-      .map((p, index) => {
-        const productInfo = `${index + 1}. ${p.name} - S/${p.price}${p.size ? ` (Talla ${p.size})` : ""}`;
-        // Si el producto tiene imagen, agregamos el enlace completo
-        if (p.image) {
-          const fullImageUrl = p.image.startsWith('http') 
-            ? p.image 
-            : `${window.location.origin}${p.image}`;
-          return `${productInfo}\n   📷 Imagen: ${fullImageUrl}`;
+      .map((item, index) => {
+        const { product, quantity } = item;
+        // Formato compacto: "2x Blusa Roja - S/45.00 (Talla M)"
+        const quantityText = quantity > 1 ? `${quantity}x ` : "";
+        const sizeText = product.size ? ` (Talla ${product.size})` : "";
+        const productInfo = `${index + 1}. ${quantityText}${product.name} - S/${product.price}${sizeText}`;
+        
+        // Agrega imagen si está disponible
+        if (product.image) {
+          const fullImageUrl = product.image.startsWith('http') 
+            ? product.image 
+            : `${window.location.origin}${product.image}`;
+          return `${productInfo}\n   📷 ${fullImageUrl}`;
         }
         return productInfo;
       })
       .join("\n\n");
 
     const finalMessage = `
-Hola, estoy interesado en los siguientes productos:
+🍒 *Cherry Bomb - Consulta de Productos*
 
 ${productList}
+${message ? `\n📝 *Mensaje:* ${message}` : ''}
 
-${message ? `Mensaje adicional:\n${message}` : ''}
-    `;
+_¡Gracias por tu interés!_
+    `.trim();
 
     const phone = "51934529189";
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(finalMessage)}`;
@@ -44,17 +62,19 @@ ${message ? `Mensaje adicional:\n${message}` : ''}
 
   return (
     <>
+      {/* Botón flotante del carrito */}
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-6 right-6 bg-rose-400 text-rose-950 px-5 py-4 rounded-full shadow-lg z-50 hover:bg-rose-500 transition font-semibold flex items-center gap-3 text-base"
-        aria-label={`Ver carrito con ${selectedProducts.length} productos`}
+        aria-label={`Ver carrito con ${totalItems} productos`}
       >
-        🛒 <span className="font-bold">{selectedProducts.length}</span>
+        🛒 <span className="font-bold">{totalItems}</span>
       </button>
 
+      {/* Modal del carrito */}
       {open && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl w-full max-w-md sm:max-w-lg p-6 space-y-4 relative shadow-2xl">
+          <div className="bg-white rounded-xl w-full max-w-md sm:max-w-lg p-6 space-y-4 relative shadow-2xl max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setOpen(false)}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold transition-colors"
@@ -63,53 +83,82 @@ ${message ? `Mensaje adicional:\n${message}` : ''}
               ✕
             </button>
 
-            {/* ENCABEZADO Y EXPLICACIÓN */}
+            {/* ENCABEZADO */}
             <div>
               <h2 className="text-xl font-bold text-gray-800">Tu Lista de Deseos ✨</h2>
               <p className="text-sm text-gray-600 mt-1 leading-relaxed">
-                Aquí tienes los productos que te gustaron. Al enviarnos esta lista por WhatsApp, podremos <strong>confirmarte el stock, coordinar el envío o resolver cualquier duda</strong> antes de tu compra. ¡Sin compromiso!</p>
+                Aquí tienes los productos que te gustaron. Al enviarnos esta lista por WhatsApp, podremos <strong>confirmarte el stock, coordinar el envío o resolver cualquier duda</strong> antes de tu compra. ¡Sin compromiso!
+              </p>
             </div>
 
-            {/* LISTA DE PRODUCTOS */}
+            {/* LISTA DE PRODUCTOS CON CANTIDADES */}
             <ul className="space-y-3 max-h-80 overflow-auto bg-rose-50/60 p-4 rounded-lg border border-rose-100">
-              {selectedProducts.map((p) => (
-                <li key={p.id} className="flex gap-3 items-start text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0">
-                  {/* IMAGEN DEL PRODUCTO */}
-                  {p.image && (
-                    <div className="relative w-16 h-16 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-rose-200">
-                      <Image
-                        src={p.image}
-                        alt={p.name}
-                        fill
-                        className="object-cover"
-                        sizes="64px"
-                      />
+              {selectedProducts.map((item) => {
+                const { product, quantity } = item;
+                return (
+                  <li key={product.id} className="flex gap-3 items-start text-sm text-gray-700 py-2 border-b border-gray-100 last:border-0">
+                    {/* IMAGEN DEL PRODUCTO */}
+                    {product.image && (
+                      <div className="relative w-16 h-16 shrink-0 rounded-lg overflow-hidden bg-gray-100 border border-rose-200">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover"
+                          sizes="64px"
+                        />
+                      </div>
+                    )}
+                    
+                    {/* INFO DEL PRODUCTO */}
+                    <div className="flex-1 min-w-0">
+                      <span className="font-semibold block text-gray-800">{product.name}</span>
+                      <div className="flex items-center gap-2 mt-1 flex-wrap">
+                        <span className="text-rose-500 font-medium">S/{product.price}</span>
+                        {product.size && (
+                          <span className="text-gray-500 text-xs bg-white px-2 py-0.5 rounded border border-rose-100">
+                            Talla {product.size}
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* CONTROL DE CANTIDAD */}
+                      <div className="flex items-center gap-2 mt-2">
+                        <button
+                          onClick={() => decreaseQuantity(product.id)}
+                          className="w-6 h-6 flex items-center justify-center bg-rose-200 hover:bg-rose-300 text-rose-700 rounded-full font-bold transition"
+                          aria-label="Disminuir cantidad"
+                        >
+                          −
+                        </button>
+                        <span className="font-semibold text-gray-800 min-w-8 text-center">
+                          {quantity}
+                        </span>
+                        <button
+                          onClick={() => increaseQuantity(product.id)}
+                          className="w-6 h-6 flex items-center justify-center bg-rose-200 hover:bg-rose-300 text-rose-700 rounded-full font-bold transition"
+                          aria-label="Aumentar cantidad"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
-                  )}
-                  
-                  {/* INFO DEL PRODUCTO */}
-                  <div className="flex-1 min-w-0">
-                    <span className="font-semibold block text-gray-800">{p.name}</span>
-                    <div className="flex items-center gap-2 mt-1 flex-wrap">
-                      <span className="text-rose-500 font-medium">S/{p.price}</span>
-                      {p.size && <span className="text-gray-500 text-xs bg-white px-2 py-0.5 rounded border border-rose-100">Talla {p.size}</span>}
-                    </div>
-                  </div>
-                  
-                  {/* BOTÓN REMOVER */}
-                  <button
-                    onClick={() => removeProduct(p.id)}
-                    className="text-gray-400 hover:text-red-500 transition-colors p-1 flex-shrink-0"
-                    aria-label={`Remover ${p.name}`}
-                  >
-                    ✕
-                  </button>
-                </li>
-              ))}
+                    
+                    {/* BOTÓN REMOVER */}
+                    <button
+                      onClick={() => removeProduct(product.id)}
+                      className="text-gray-400 hover:text-red-500 transition-colors p-1 shrink-0"
+                      aria-label={`Remover ${product.name}`}
+                    >
+                      ✕
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
 
-            {/* BOTÓN VACIAR (Ahora más discreto) */}
-            {selectedProducts.length > 0 && (
+            {/* BOTÓN VACIAR */}
+            {totalItems > 0 && (
               <div className="flex justify-end">
                 <button
                   onClick={() => {
@@ -142,7 +191,7 @@ ${message ? `Mensaje adicional:\n${message}` : ''}
             <button
               onClick={sendWhatsApp}
               className="w-full bg-emerald-400 text-emerald-950 py-3.5 rounded-lg hover:bg-emerald-500 font-semibold transition text-base shadow-md hover:shadow-lg flex items-center justify-center gap-2"
-              disabled={selectedProducts.length === 0}
+              disabled={totalItems === 0}
             >
               <span>Consultar por WhatsApp</span>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-emerald-900">
