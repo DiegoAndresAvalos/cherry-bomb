@@ -93,7 +93,7 @@ const products = {
 
     llaveros: [
       { id: 54, name: "Llavero Hello Kitty rosita", price: 7, image: "/Llavero-Hello-Kitty-rosita.jpg", inStock: true },
-      { id: 55, name: "Llavero Hello Kitty rojita", price: 7, image: "/Llavero-Hello-Kitty-rojita.jpg", inStock: true },
+      { id: 55, name: "Llavero Hello Kitty rojita", price: 7, image: "/Llavero-Hello-Kitty-rojita.jpg", inStock: false },
       { id: 56, name: "Llavero Snoopy rosita", price: 7, image: "/Llavero-Snoopy-rosita.jpg", inStock: true },
       { id: 57, name: "Llavero Hello Kitty turquesa", price: 7, image: "/Llavero-Hello-Kitty-turquesa.jpg", inStock: true }
     ]
