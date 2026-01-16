@@ -52,7 +52,7 @@ Organicé los productos en secciones claras para facilitar la búsqueda:
 - **Deportiva:** Ropa cómoda para entrenar.
 - **Novedades y Moda:** Accesorios, peluches, maquillaje y perfumes.
 
-## 🛠️ Cómo correr el proyecto en tu local
+## Cómo correr el proyecto en tu local
 
 Si quieres probar el código en tu máquina o colaborar, sigue estos pasos sencillos:
 
@@ -67,5 +67,5 @@ Si quieres probar el código en tu máquina o colaborar, sigue estos pasos senci
    ```bash
    npm run dev
 5. ¡Listo! Abre tu navegador y entra a http://localhost:3000 para verlo en acción.
-
+---
 Hecho con mucho código y café ☕ por Diego Avalos. 
