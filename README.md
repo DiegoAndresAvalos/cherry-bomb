@@ -64,7 +64,8 @@ Si quieres probar el código en tu máquina o colaborar, sigue estos pasos senci
    ```bash
    npm install
 3. **Levanta el servidor de desarrollo:**
-   *npm run dev*
-4. ¡Listo! Abre tu navegador y entra a http://localhost:3000 para verlo en acción.
+   ```bash
+   npm run dev
+5. ¡Listo! Abre tu navegador y entra a http://localhost:3000 para verlo en acción.
 
 Hecho con mucho código y café ☕ por Diego Avalos. 
