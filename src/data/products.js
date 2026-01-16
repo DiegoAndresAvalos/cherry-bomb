@@ -83,13 +83,12 @@ const products = {
 
   novedades: {
     peluches: [
-      { id: 47, name: "Peluchita rosita", price: 12, image: "/Peluchita-rosita-bebé.jpg", inStock: false },
-      { id: 48, name: "Peluchito amarillo mediano", price: 13.50, image: "/Peluchito-mediano-amarillito.jpg", inStock: true },
-      { id: 49, name: "Peluchita rosita bebé", price: 12, image: "/Peluchita-rosita-bebé-2.jpg", inStock: true },
-      { id: 51, name: "Muñequita naranja con mochila", price: 15, image: "/Muñequita-naranjita-con-mochilita.jpg", inStock: true },
-      { id: 52, name: "Muñequita naranja", price: 12, image: "/Muñequita-naranjita.jpg", inStock: true },
-      { id: 53, name: "La Monchi naranja", price: 13, image: "/La-Monchi-naranja.jpg", inStock: true }
-      ,
+      { id: 47, name: "Peluchita Rosada", price: 12, image: "/Peluchita-rosita-bebé.jpg", inStock: false },
+      { id: 48, name: "Peluchito Amarillo Mediano", price: 13.50, image: "/Peluchito-mediano-amarillito.jpg", inStock: true },
+      { id: 49, name: "Peluchita Rosada Bebé", price: 12, image: "/Peluchita-rosita-bebé-2.jpg", inStock: true },
+      { id: 51, name: "Muñeca Naranja con Mochila", price: 15, image: "/Muñequita-naranjita-con-mochilita.jpg", inStock: true },
+      { id: 52, name: "Muñeca Naranja", price: 12, image: "/Muñequita-naranjita.jpg", inStock: true },
+      { id: 53, name: "Monchi Naranja", price: 13, image: "/La-Monchi-naranja.jpg", inStock: true },
       { id: 79, name: "Peluchito Morado", price: 16.90, image: "/peluche-morado.jpg", inStock: true },
       { id: 80, name: "Peluchito Vaquita", price: 17.90, image: "/peluche-vaquita.jpg", inStock: true },
       { id: 81, name: "Peluchito Elefante Verde", price: 14.00, image: "/peluche-elefante-verde.jpg", inStock: true },
@@ -124,7 +123,6 @@ const products = {
   ]
 };
 
-// ...existing code...
 products.carteras = [
   { id: 72, name: "Cartera Marrón y Blanco", price: 41, image: "/cartera-marron-blanco.jpg", inStock: true },
   { id: 73, name: "Cartera Moderna", price: 38.90, image: "/cartera-moderna.jpg", inStock: true },
