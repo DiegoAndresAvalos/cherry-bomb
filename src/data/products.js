@@ -89,6 +89,11 @@ const products = {
       { id: 51, name: "Muñequita naranja con mochila", price: 15, image: "/Muñequita-naranjita-con-mochilita.jpg", inStock: true },
       { id: 52, name: "Muñequita naranja", price: 12, image: "/Muñequita-naranjita.jpg", inStock: true },
       { id: 53, name: "La Monchi naranja", price: 13, image: "/La-Monchi-naranja.jpg", inStock: true }
+      ,
+      { id: 79, name: "Peluchito Morado", price: 16.90, image: "/peluche-morado.jpg", inStock: true },
+      { id: 80, name: "Peluchito Vaquita", price: 17.90, image: "/peluche-vaquita.jpg", inStock: true },
+      { id: 81, name: "Peluchito Elefante Verde", price: 14.00, image: "/peluche-elefante-verde.jpg", inStock: true },
+      { id: 82, name: "Peluchito Elefante Rosa", price: 14.00, image: "/peluche-elefante-rosa.jpg", inStock: true }
     ],
 
     llaveros: [
