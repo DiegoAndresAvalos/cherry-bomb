@@ -67,5 +67,7 @@ Si quieres probar el código en tu máquina o colaborar, sigue estos pasos senci
    ```bash
    npm run dev
 5. ¡Listo! Abre tu navegador y entra a http://localhost:3000 para verlo en acción.
+
+**Nota:** Recuerda cambiar donde dice `tu-usuario` y `TU_USUARIO_GITHUB` por tu nombre de usuario real de GitHub para que los comandos de clonar y las estadísticas funcionen de verdad.
 ---
 Hecho con mucho código y café ☕ por Diego Avalos. 
