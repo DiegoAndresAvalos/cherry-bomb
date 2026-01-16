@@ -35,16 +35,15 @@ export default function Home() {
       <ProductSection id="deportiva-blusas" title="Deportiva · Blusas" products={products.deportiva.blusas} />
       <ProductSection id="deportiva-pantalones" title="Deportiva · Pantalones y Pantalonetas" products={products.deportiva.pantalonesYPantalonetas} />
 
+
       {/* NOVEDADES */}
       <ProductSection id="novedades-peluches" title="Novedades · Peluches" products={products.novedades.peluches} bgColor="bg-pink-50" />
       <ProductSection id="novedades-llaveros" title="Novedades · Llaveros" products={products.novedades.llaveros} bgColor="bg-pink-50" />
+      <ProductSection id="novedades-carteras" title="Novedades · Carteras" products={products.novedades.carteras} bgColor="bg-pink-50" />
 
-      {/* MAQUILLAJE / PERFUMES */}
-      <ProductSection id="maquillaje" title="Maquillaje" products={products.maquillaje} />
-      <ProductSection id="perfumes" title="Perfumes" products={products.perfumes} />
-
-        {/* CARTERAS */}
-        <ProductSection id="carteras" title="Carteras" products={products.carteras} />
+      {/* MODA */}
+      <ProductSection id="moda-maquillaje" title="Moda · Maquillaje" products={products.moda.maquillaje} />
+      <ProductSection id="moda-perfumes" title="Moda · Perfumes" products={products.moda.perfumes} />
 
       <Footer />
     </CartProvider>

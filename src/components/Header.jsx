@@ -90,12 +90,20 @@ export default function Header() {
               items={[
                 { label: "Peluches", href: "#novedades-peluches" },
                 { label: "Llaveros", href: "#novedades-llaveros" },
+                { label: "Carteras", href: "#novedades-carteras" },
               ]}
             />
 
-            <a href="#maquillaje" className="hover:text-pink-600">Maquillaje</a>
-            <a href="#perfumes" className="hover:text-pink-600">Perfumes</a>
-            <a href="#carteras" className="hover:text-pink-600">Carteras</a>
+            <MenuDropdown
+              label="Moda"
+              open={openMenu === "moda"}
+              onClick={() => toggleMenu("moda")}
+              close={() => setOpenMenu(null)}
+              items={[
+                { label: "Maquillaje", href: "#moda-maquillaje" },
+                { label: "Perfumes", href: "#moda-perfumes" },
+              ]}
+            />
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -152,13 +160,18 @@ export default function Header() {
                 <div className="ml-4 space-y-2 text-base text-gray-700">
                   <a href="#novedades-peluches" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Peluches</a>
                   <a href="#novedades-llaveros" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Llaveros</a>
+                  <a href="#novedades-carteras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Carteras</a>
                 </div>
               </div>
 
-              {/* Otros */}
-              <a href="#maquillaje" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600 text-pink-700">Maquillaje</a>
-              <a href="#perfumes" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600 text-pink-700">Perfumes</a>
-              <a href="#carteras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600 text-pink-700">Carteras</a>
+              {/* Moda */}
+              <div>
+                <div className="font-bold text-pink-700 mb-2">Moda</div>
+                <div className="ml-4 space-y-2 text-base text-gray-700">
+                  <a href="#moda-maquillaje" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Maquillaje</a>
+                  <a href="#moda-perfumes" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Perfumes</a>
+                </div>
+              </div>
             </div>
           </div>
         )}
