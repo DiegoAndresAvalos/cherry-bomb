@@ -119,8 +119,7 @@ const products = {
   ]
 };
 
-
-// Nueva sección: Carteras
+// ...existing code...
 products.carteras = [
   { id: 72, name: "Cartera Marrón y Blanco", price: 41, image: "/cartera-marron-blanco.jpg", inStock: true },
   { id: 73, name: "Cartera Moderna", price: 38.90, image: "/cartera-moderna.jpg", inStock: true },

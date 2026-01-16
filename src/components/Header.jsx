@@ -58,7 +58,6 @@ export default function Header() {
               ]}
             />
 
-              <a href="#carteras" className="hover:text-pink-600">Carteras</a>
 
             <MenuDropdown
               label="Niñas"
@@ -96,6 +95,7 @@ export default function Header() {
 
             <a href="#maquillaje" className="hover:text-pink-600">Maquillaje</a>
             <a href="#perfumes" className="hover:text-pink-600">Perfumes</a>
+            <a href="#carteras" className="hover:text-pink-600">Carteras</a>
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -126,13 +126,6 @@ export default function Header() {
                 </div>
               </div>
 
-                {/* Carteras */}
-                <div>
-                  <div className="font-bold text-pink-700 mb-2">Carteras</div>
-                  <div className="ml-4 space-y-2 text-base text-gray-700">
-                    <a href="#carteras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Ver todo</a>
-                  </div>
-                </div>
 
               {/* Niñas */}
               <div>
@@ -165,6 +158,7 @@ export default function Header() {
               {/* Otros */}
               <a href="#maquillaje" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600 text-pink-700">Maquillaje</a>
               <a href="#perfumes" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600 text-pink-700">Perfumes</a>
+              <a href="#carteras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600 text-pink-700">Carteras</a>
             </div>
           </div>
         )}
