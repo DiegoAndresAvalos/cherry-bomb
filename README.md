@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# 🍒 Cherry Bomb - Refactorización
 
-First, run the development server:
+## Resumen personal de cambios
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Durante esta refactorización, me enfoqué en mejorar la experiencia de usuario, la accesibilidad y la estructura del código. Ahora el carrito se guarda automáticamente, las cantidades de productos se gestionan de forma intuitiva y el mensaje de WhatsApp es mucho más claro y profesional.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Agregué notificaciones visuales (toast) para que el usuario sepa cuando agrega algo al carrito, y optimicé la accesibilidad en los componentes interactivos. También mejoré el SEO y la vista previa al compartir en redes sociales.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+En móvil, ahora hay una pista visual para el scroll horizontal en las secciones de productos, y el manejo de cantidades es mucho más cómodo. El badge flotante muestra el total de productos en el carrito en tiempo real.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Utilicé React Hooks, Next.js App Router y Tailwind CSS, cuidando la accesibilidad y el rendimiento. El código está comentado en español y mantuve la paleta de colores original.
 
-## Learn More
+### Próximos pasos que me gustaría implementar:
+- Analytics
+- PWA
+- Wishlist
+- Filtros y búsqueda
+- Comparación de productos
+- Reseñas y ratings
+- Galería de imágenes por producto
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Todo está probado y funciona bien, sin errores en consola. Si tienes sugerencias, ¡son bienvenidas!
