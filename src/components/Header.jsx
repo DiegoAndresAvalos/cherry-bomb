@@ -58,6 +58,8 @@ export default function Header() {
               ]}
             />
 
+              <a href="#carteras" className="hover:text-pink-600">Carteras</a>
+
             <MenuDropdown
               label="Niñas"
               open={openMenu === "ninas"}
@@ -123,6 +125,14 @@ export default function Header() {
                   <a href="#chicas-casacas-poleras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Casacas y Poleras</a>
                 </div>
               </div>
+
+                {/* Carteras */}
+                <div>
+                  <div className="font-bold text-pink-700 mb-2">Carteras</div>
+                  <div className="ml-4 space-y-2 text-base text-gray-700">
+                    <a href="#carteras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Ver todo</a>
+                  </div>
+                </div>
 
               {/* Niñas */}
               <div>

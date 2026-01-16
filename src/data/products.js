@@ -119,4 +119,16 @@ const products = {
   ]
 };
 
+
+// Nueva sección: Carteras
+products.carteras = [
+  { id: 72, name: "Cartera Marrón y Blanco", price: 41, image: "/cartera-marron-blanco.jpg", inStock: true },
+  { id: 73, name: "Cartera Moderna", price: 38.90, image: "/cartera-moderna.jpg", inStock: true },
+  { id: 74, name: "Cartera Mochilera", price: 31.00, image: "/Cartera-mochilera.jpg", inStock: true },
+  { id: 75, name: "Billetera Rosada", price: 37.00, image: "/Billetera-rosada.jpg", inStock: true },
+  { id: 76, name: "Monedero Clásico", price: 21.00, image: "/Monedero.jpg", inStock: true },
+  { id: 77, name: "Billetera Elegante", price: 29.00, image: "/Billetera.jpg", inStock: true },
+  { id: 78, name: "Canguro Deportivo", price: 22.00, image: "/Canguro.jpg", inStock: true }
+];
+
 export default products;

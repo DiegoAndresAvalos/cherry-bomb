@@ -32,7 +32,6 @@ export default function Home() {
       <ProductSection id="ninas-conjuntos" title="Niñas · Conjuntos" products={products.niñas.conjuntos} bgColor="bg-pink-50" />
 
       {/* DEPORTIVA */}
-      {/* --- AQUI FALTABA ESTA SECCIÓN --- */}
       <ProductSection id="deportiva-blusas" title="Deportiva · Blusas" products={products.deportiva.blusas} />
       <ProductSection id="deportiva-pantalones" title="Deportiva · Pantalones y Pantalonetas" products={products.deportiva.pantalonesYPantalonetas} />
 
@@ -43,6 +42,9 @@ export default function Home() {
       {/* MAQUILLAJE / PERFUMES */}
       <ProductSection id="maquillaje" title="Maquillaje" products={products.maquillaje} />
       <ProductSection id="perfumes" title="Perfumes" products={products.perfumes} />
+
+        {/* CARTERAS */}
+        <ProductSection id="carteras" title="Carteras" products={products.carteras} />
 
       <Footer />
     </CartProvider>
