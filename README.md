@@ -61,6 +61,10 @@ Si quieres probar el código en tu máquina o colaborar, sigue estos pasos senci
    git clone [https://github.com/tu-usuario/cherry-bomb.git](https://github.com/tu-usuario/cherry-bomb.git)
    cd cherry-bomb
 2. **Instala las dependencias:**
-   *npm install*
+   ```bash
+   npm install
 3. **Levanta el servidor de desarrollo:**
    *npm run dev*
+4. ¡Listo! Abre tu navegador y entra a http://localhost:3000 para verlo en acción.
+
+Hecho con mucho código y café ☕ por Diego Avalos. 
