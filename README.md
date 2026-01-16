@@ -17,7 +17,7 @@
 
 ## 👋 Sobre el Proyecto
 
-¡Hola! Este es **Cherry Bomb**, una aplicación web de ventas que desarrollé pensando en ofrecer una experiencia de compra súper visual y directa. Mi objetivo principal fue crear un catálogo fluido donde los usuarios pudieran armar su pedido y enviarlo listo por WhatsApp, eliminando la fricción de los procesos de pago tradicionales.
+¡Hola! Este es **Cherry Bomb**, una aplicación web de ventas que desarrollé pensando en ofrecer una experiencia de compra súper visual y directa. Mi objetivo principal fue crear un catálogo fluido donde los usuarios pudieran armar su pedido y enviarlo listo por WhatsApp, eliminando la fricción de los procesos de pago tradicionales, todo esto de manera gratuita.
 
 Recientemente refactoricé todo el código para aprovechar la potencia de **Next.js 16** y el nuevo **Tailwind CSS 4**, logrando que la navegación sea instantánea y se sienta muy moderna en móviles.
 
