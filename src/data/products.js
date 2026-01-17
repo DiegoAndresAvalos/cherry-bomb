@@ -127,7 +127,21 @@ const products = {
 // Nueva sección Moda
 products.moda = {
   maquillaje: products.maquillaje,
-  perfumes: products.perfumes
+  perfumes: products.perfumes,
+  cabello: [
+    { id: 83, name: "Peines y Herramientas para Trenzas", price: 2.00, image: "/Peines-y-herramientas-para-trenzas.jpg", inStock: true },
+    { id: 84, name: "Colets", price: 2.00, image: "/Colets.jpg", inStock: true },
+    { id: 85, name: "Vincha Skincare", price: 12.00, image: "/Vincha-skincare.jpg", inStock: true },
+    { id: 86, name: "Colets 2", price: 2.00, image: "/Colets-2.jpg", inStock: true },
+    { id: 87, name: "Vincha Rosada en Perlas", price: 9.00, image: "/Vincha-rosada-en-perlas.jpg", inStock: true },
+    { id: 88, name: "Colet 3", price: 5.00, image: "/Colet-3.jpg", inStock: true }
+  ],
+  cosmetiqueras: [
+    { id: 89, name: "Cosmetiquera Transparente", price: 13.00, image: "/Cosmetiquera-transparente.jpg", inStock: true },
+    { id: 90, name: "Joyero Rosado", price: 21.00, image: "/Joyero-rosado.jpg", inStock: true },
+    { id: 91, name: "Espejo Cosmetic", price: 17.00, image: "/Espejo-cosmetic.jpg", inStock: true },
+    { id: 92, name: "Espejito Armable Rosado", price: 7.00, image: "/Espejito-armable-rosado.jpg", inStock: true }
+  ]
 };
 
 // Mover carteras a novedades
