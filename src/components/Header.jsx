@@ -104,6 +104,7 @@ export default function Header() {
                 { label: "Perfumes", href: "#moda-perfumes" },
                 { label: "Cabello", href: "#moda-cabello" },
                 { label: "Cosmetiqueras", href: "#moda-cosmetiqueras" },
+                { label: "Maniquís", href: "#moda-maniquis" },
               ]}
             />
             <a
@@ -181,6 +182,7 @@ export default function Header() {
                   <a href="#moda-perfumes" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Perfumes</a>
                   <a href="#moda-cabello" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Cabello</a>
                   <a href="#moda-cosmetiqueras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Cosmetiqueras</a>
+                  <a href="#moda-maniquis" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Maniquís</a>
                 </div>
               </div>
               {/* Detalles y Accesorios */}
