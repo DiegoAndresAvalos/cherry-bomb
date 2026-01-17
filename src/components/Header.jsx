@@ -106,15 +106,13 @@ export default function Header() {
                 { label: "Cosmetiqueras", href: "#moda-cosmetiqueras" },
               ]}
             />
-            <MenuDropdown
-              label="Detalles y Accesorios"
-              open={openMenu === "detalles"}
-              onClick={() => toggleMenu("detalles")}
-              close={() => setOpenMenu(null)}
-              items={[
-                { label: "Ver todo", href: "#detalles-accesorios" },
-              ]}
-            />
+            <a
+              href="#detalles-accesorios"
+              className="hover:text-pink-600 transition-colors font-semibold"
+              style={{ padding: '0.5rem 1rem' }}
+            >
+              Detalles y Accesorios
+            </a>
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -187,10 +185,13 @@ export default function Header() {
               </div>
               {/* Detalles y Accesorios */}
               <div>
-                <div className="font-bold text-pink-700 mb-2">Detalles y Accesorios</div>
-                <div className="ml-4 space-y-2 text-base text-gray-700">
-                  <a href="#detalles-accesorios" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Ver todo</a>
-                </div>
+                <a
+                  href="#detalles-accesorios"
+                  onClick={() => setMobileOpen(false)}
+                  className="block font-bold text-pink-700 mb-2 hover:text-pink-600"
+                >
+                  Detalles y Accesorios
+                </a>
               </div>
             </div>
           </div>
