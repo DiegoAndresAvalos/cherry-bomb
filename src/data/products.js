@@ -120,7 +120,10 @@ const products = {
     { id: 95, name: "Tinta rosada", price: 3.90, image: "/Tinta-rosada.jpg", inStock: true },
     { id: 96, name: "Lápiz delineador de labios BELLESPA", price: 3.90, image: "/Lapiz-delineador-de-labios-BELLESPA.jpg", inStock: true },
     { id: 97, name: "Delineador azul para ojos", price: 11.00, image: "/Delineador-azul-para-ojos.jpg", inStock: true },
-    { id: 98, name: "Pegamento de pestañas DUO", price: 25.00, image: "/Pegamento-de-pestañas-DUO.jpg", inStock: true }
+    { id: 98, name: "Pegamento de pestañas DUO", price: 25.00, image: "/Pegamento-de-pestañas-DUO.jpg", inStock: true },
+    { id: 99, name: "Kit de uñas", price: 9.90, image: "/Kit-de-uñas.jpg", inStock: true },
+    { id: 100, name: "Cremas para manos SATIN (unidad)", price: 43.00, image: "/Cremas-para-manos-SATIN.jpg", inStock: true },
+    { id: 101, name: "Cremas para manos SATIN (pack 2)", price: 81.00, image: "/Cremas-para-manos-SATIN.jpg", inStock: true }
   ],
 
   perfumes: [
