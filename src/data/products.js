@@ -143,7 +143,9 @@ products.moda = {
     { id: 85, name: "Vincha Skincare", price: 12.00, image: "/Vincha-skincare.jpg", inStock: true },
     { id: 86, name: "Colets 2", price: 2.00, image: "/Colets-2.jpg", inStock: true },
     { id: 87, name: "Vincha Rosada en Perlas", price: 9.00, image: "/Vincha-rosada-en-perlas.jpg", inStock: true },
-    { id: 88, name: "Colet 3", price: 5.00, image: "/Colet-3.jpg", inStock: true }
+    { id: 88, name: "Colet 3", price: 5.00, image: "/Colet-3.jpg", inStock: true },
+    { id: 102, name: "Ruleros", price: 20.00, image: "/Ruleros.jpg", inStock: true },
+    { id: 103, name: "Vincha para peinado", price: 10.00, image: "/Vincha-para-peinado.jpg", inStock: true }
   ],
   cosmetiqueras: [
     { id: 89, name: "Cosmetiquera Transparente", price: 13.00, image: "/Cosmetiquera-transparente.jpg", inStock: true },
