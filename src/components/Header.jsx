@@ -102,6 +102,8 @@ export default function Header() {
               items={[
                 { label: "Maquillaje", href: "#moda-maquillaje" },
                 { label: "Perfumes", href: "#moda-perfumes" },
+                { label: "Cabello", href: "#moda-cabello" },
+                { label: "Cosmetiqueras", href: "#moda-cosmetiqueras" },
               ]}
             />
           </nav>
@@ -170,6 +172,8 @@ export default function Header() {
                 <div className="ml-4 space-y-2 text-base text-gray-700">
                   <a href="#moda-maquillaje" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Maquillaje</a>
                   <a href="#moda-perfumes" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Perfumes</a>
+                  <a href="#moda-cabello" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Cabello</a>
+                  <a href="#moda-cosmetiqueras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Cosmetiqueras</a>
                 </div>
               </div>
             </div>
