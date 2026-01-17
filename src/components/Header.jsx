@@ -106,6 +106,15 @@ export default function Header() {
                 { label: "Cosmetiqueras", href: "#moda-cosmetiqueras" },
               ]}
             />
+            <MenuDropdown
+              label="Detalles y Accesorios"
+              open={openMenu === "detalles"}
+              onClick={() => toggleMenu("detalles")}
+              close={() => setOpenMenu(null)}
+              items={[
+                { label: "Ver todo", href: "#detalles-accesorios" },
+              ]}
+            />
           </nav>
 
           {/* MOBILE BUTTON */}
@@ -174,6 +183,13 @@ export default function Header() {
                   <a href="#moda-perfumes" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Perfumes</a>
                   <a href="#moda-cabello" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Cabello</a>
                   <a href="#moda-cosmetiqueras" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Cosmetiqueras</a>
+                </div>
+              </div>
+              {/* Detalles y Accesorios */}
+              <div>
+                <div className="font-bold text-pink-700 mb-2">Detalles y Accesorios</div>
+                <div className="ml-4 space-y-2 text-base text-gray-700">
+                  <a href="#detalles-accesorios" onClick={() => setMobileOpen(false)} className="block hover:text-pink-600">Ver todo</a>
                 </div>
               </div>
             </div>
