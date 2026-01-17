@@ -47,6 +47,7 @@ export default function Home() {
       <ProductSection id="moda-perfumes" title="Moda · Perfumes" products={products.moda.perfumes} />
       <ProductSection id="moda-cabello" title="Moda · Cabello" products={products.moda.cabello} />
       <ProductSection id="moda-cosmetiqueras" title="Moda · Cosmetiqueras" products={products.moda.cosmetiqueras} />
+      <ProductSection id="moda-maniquis" title="Moda · Maniquís" products={products.moda.maniquis} />
 
       <ProductSection id="detalles-accesorios" title="Detalles y Accesorios" products={products.detallesYAccesorios} />
       <Footer />

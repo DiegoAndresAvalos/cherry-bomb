@@ -156,6 +156,11 @@ products.moda = {
     { id: 90, name: "Joyero Rosado", price: 21.00, image: "/Joyero-rosado.jpg", inStock: true },
     { id: 91, name: "Espejo Cosmetic", price: 17.00, image: "/Espejo-cosmetic.jpg", inStock: true },
     { id: 92, name: "Espejito Armable Rosado", price: 7.00, image: "/Espejito-armable-rosado.jpg", inStock: true }
+  ],
+  maniquis: [
+    { id: 200, name: "Cabezal para peinar cabello natural y sintético", price: 54.50, image: "/Cabezal-para-peinar-cabello-natural-y-sintetico.jpg", inStock: true },
+    { id: 201, name: "Cabezal para maquillaje", price: 43.90, image: "/Cabezal-para-maquillaje.jpg", inStock: true },
+    { id: 202, name: "Manicura para practicar uñas", price: 40.00, image: "/Manicura-para-practicar-uñas.jpg", inStock: true }
   ]
 };
 
