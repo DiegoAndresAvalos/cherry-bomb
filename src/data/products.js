@@ -1,4 +1,8 @@
 const products = {
+    detallesYAccesorios: [
+      { id: 104, name: "Libro de álbum", price: 15.00, image: "/Libro-de-album.jpg", inStock: true },
+      { id: 105, name: "Pulsera dorada", price: 10.00, image: "/Pulsera-dorada.jpg", inStock: true }
+    ],
   chicas: {
     jeans: [
       { id: 1, name: "Jean licrado bordado armador", price: 37, size: "32", image: "/Jean-licrado-1.jpg", inStock: true },
