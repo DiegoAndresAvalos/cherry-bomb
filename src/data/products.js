@@ -100,9 +100,9 @@ const products = {
     ],
 
     llaveros: [
-      { id: 54, name: "Llavero Hello Kitty rosita", price: 7, image: "/Llavero-Hello-Kitty-rosita.jpg", inStock: true },
+      { id: 54, name: "Llavero Hello Kitty rosita", price: 7, image: "/Llavero-Hello-Kitty-rosita.jpg", inStock: false },
       { id: 55, name: "Llavero Hello Kitty rojita", price: 7, image: "/Llavero-Hello-Kitty-rojita.jpg", inStock: false },
-      { id: 56, name: "Llavero Snoopy rosita", price: 7, image: "/Llavero-Snoopy-rosita.jpg", inStock: true },
+      { id: 56, name: "Llavero Snoopy rosita", price: 7, image: "/Llavero-Snoopy-rosita.jpg", inStock: false },
       { id: 57, name: "Llavero Hello Kitty turquesa", price: 7, image: "/Llavero-Hello-Kitty-turquesa.jpg", inStock: true }
     ]
   },
@@ -119,10 +119,10 @@ const products = {
     { id: 67, name: "Beauty blender", price: 4, image: "/Beauty-blender.jpg", inStock: true },
     { id: 68, name: "Base líquida matte Poker Queen", price: 13, image: "/Base-líquida-matte.jpg", inStock: true },
     { id: 69, name: "Corrector líquido True Skin", price: 9.5, image: "/Corretor-líquido-True-skin.jpg", inStock: true },
-    { id: 93, name: "Kit de brochitas CYZONE", price: 55.00, image: "/Kit-de-brochitas-CYZONE.jpg", inStock: true },
+    { id: 93, name: "Kit de brochitas CYZONE", price: 55.00, image: "/Kit-de-brochitas-CYZONE.jpg", inStock: false },
     { id: 94, name: "Glitter gel color blanco", price: 18.00, image: "/Glitter-gel-color-blanco.jpg", inStock: true },
     { id: 95, name: "Tinta rosada", price: 3.90, image: "/Tinta-rosada.jpg", inStock: true },
-    { id: 96, name: "Lápiz delineador de labios BELLESPA", price: 3.90, image: "/Lapiz-delineador-de-labios-BELLESPA.jpg", inStock: true },
+    { id: 96, name: "Lápiz delineador de labios BELLESPA", price: 3.90, image: "/Lapiz-delineador-de-labios-BELLESPA.jpg", inStock: false },
     { id: 97, name: "Delineador azul para ojos", price: 11.00, image: "/Delineador-azul-para-ojos.jpg", inStock: true },
     { id: 98, name: "Pegamento de pestañas DUO", price: 25.00, image: "/Pegamento-de-pestañas-DUO.jpg", inStock: true },
     { id: 99, name: "Kit de uñas", price: 9.90, image: "/Kit-de-uñas.jpg", inStock: true },
@@ -154,7 +154,7 @@ products.moda = {
   cosmetiqueras: [
     { id: 89, name: "Cosmetiquera Transparente", price: 13.00, image: "/Cosmetiquera-transparente.jpg", inStock: true },
     { id: 90, name: "Joyero Rosado", price: 21.00, image: "/Joyero-rosado.jpg", inStock: true },
-    { id: 91, name: "Espejo Cosmetic", price: 17.00, image: "/Espejo-cosmetic.jpg", inStock: true },
+    { id: 91, name: "Espejo Cosmetic", price: 17.00, image: "/Espejo-cosmetic.jpg", inStock: false },
     { id: 92, name: "Espejito Armable Rosado", price: 7.00, image: "/Espejito-armable-rosado.jpg", inStock: true }
   ],
   maniquis: [
