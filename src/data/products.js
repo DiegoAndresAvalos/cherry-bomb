@@ -1,7 +1,7 @@
 const products = {
     detallesYAccesorios: [
       { id: 104, name: "Libro de álbum", price: 15.00, image: "/Libro-de-album.jpg", inStock: true },
-      { id: 105, name: "Pulsera dorada", price: 10.00, image: "/Pulsera-dorada.jpg", inStock: true }
+      { id: 105, name: "Pulsera dorada", price: 10.00, image: "/Pulsera-dorada.jpg", inStock: true },
       { id: 303, name: "Cartera de Minnie", price: 18.00, image: "/Cartera-de-Minnie.jpg", inStock: true }
     ],
   chicas: {
