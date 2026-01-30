@@ -127,7 +127,7 @@ const products = {
     { id: 98, name: "Pegamento de pestañas DUO", price: 25.00, image: "/Pegamento-de-pestañas-DUO.jpg", inStock: true },
     { id: 99, name: "Kit de uñas", price: 9.90, image: "/Kit-de-uñas.jpg", inStock: true },
     { id: 100, name: "Cremas para manos SATIN (unidad)", price: 43.00, image: "/Cremas-para-manos-SATIN.jpg", inStock: true },
-    { id: 101, name: "Cremas para manos SATIN (pack 2)", price: 81.00, image: "/Cremas-para-manos-SATIN.jpg", inStock: true }
+    { id: 101, name: "Cremas para manos SATIN (pack 2)", price: 81.00, image: "/Cremas-para-manos-SATIN.jpg", inStock: false }
   ],
 
   perfumes: [
@@ -144,10 +144,10 @@ products.moda = {
   cabello: [
     { id: 83, name: "Peines y Herramientas para Trenzas", price: 2.00, image: "/Peines-y-herramientas-para-trenzas.jpg", inStock: true },
     { id: 84, name: "Colets", price: 2.00, image: "/Colets.jpg", inStock: true },
-    { id: 85, name: "Vincha Skincare", price: 12.00, image: "/Vincha-skincare.jpg", inStock: true },
+    { id: 85, name: "Vincha Skincare", price: 12.00, image: "/Vincha-skincare.jpg", inStock: false },
     { id: 86, name: "Colets 2", price: 2.00, image: "/Colets-2.jpg", inStock: true },
-    { id: 87, name: "Vincha Rosada en Perlas", price: 9.00, image: "/Vincha-rosada-en-perlas.jpg", inStock: true },
-    { id: 88, name: "Colet 3", price: 5.00, image: "/Colet-3.jpg", inStock: true },
+    { id: 87, name: "Vincha Rosada en Perlas", price: 9.00, image: "/Vincha-rosada-en-perlas.jpg", inStock: false },
+    { id: 88, name: "Colet 3", price: 5.00, image: "/Colet-3.jpg", inStock: false },
     { id: 102, name: "Ruleros", price: 20.00, image: "/Ruleros.jpg", inStock: true },
     { id: 103, name: "Vincha para peinado", price: 10.00, image: "/Vincha-para-peinado.jpg", inStock: true }
   ],
@@ -158,9 +158,9 @@ products.moda = {
     { id: 92, name: "Espejito Armable Rosado", price: 7.00, image: "/Espejito-armable-rosado.jpg", inStock: true }
   ],
   maniquis: [
-    { id: 200, name: "Cabezal para peinar cabello natural y sintético", price: 54.50, image: "/Cabezal-para-peinar-cabello-natural-y-sintetico.jpg", inStock: true },
-    { id: 201, name: "Cabezal para maquillaje", price: 43.90, image: "/Cabezal-para-maquillaje.jpg", inStock: true },
-    { id: 202, name: "Manicura para practicar uñas", price: 40.00, image: "/Manicura-para-practicar-uñas.jpg", inStock: true }
+    { id: 200, name: "Cabezal para peinar cabello natural y sintético", price: 54.50, image: "/Cabezal-para-peinar-cabello-natural-y-sintetico.jpg", inStock: false },
+    { id: 201, name: "Cabezal para maquillaje", price: 43.90, image: "/Cabezal-para-maquillaje.jpg", inStock: false },
+    { id: 202, name: "Manicura para practicar uñas", price: 40.00, image: "/Manicura-para-practicar-uñas.jpg", inStock: false }
   ]
 };
 
