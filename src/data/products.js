@@ -2,6 +2,7 @@ const products = {
     detallesYAccesorios: [
       { id: 104, name: "Libro de álbum", price: 15.00, image: "/Libro-de-album.jpg", inStock: true },
       { id: 105, name: "Pulsera dorada", price: 10.00, image: "/Pulsera-dorada.jpg", inStock: true }
+      { id: 303, name: "Cartera de Minnie", price: 18.00, image: "/Cartera-de-Minnie.jpg", inStock: true }
     ],
   chicas: {
     jeans: [
@@ -66,6 +67,9 @@ const products = {
 
     conjuntos: [
       { id: 38, name: "Conjunto palo rosa", price: 70, size: "30", image: "/Conjunto-palo-rosa-para-niñas.jpg", inStock: true }
+    ],
+    ropaDeBaño: [
+      { id: 300, name: "Ropa de baño color turquesa", price: 27.00, image: "/Ropa-de-baño-color-turquesa.jpg", inStock: true }
     ]
   },
 
@@ -108,6 +112,8 @@ const products = {
   },
 
   maquillaje: [
+      { id: 301, name: "Pegamento de pestañas SELENE", price: 11.00, image: "/Pegamento-de-pestañas-SELENE.jpg", inStock: true },
+      { id: 302, name: "Pestañas una x una: Talla 10", price: 9.50, image: "/Pestañas-una-x-una.jpg", inStock: true },
     { id: 58, name: "Polvo suelto translúcido", price: 11, image: "/Polvo-suelto-translúcido.jpg", inStock: true },
     { id: 60, name: "Labial tipo gloss", price: 5, image: "/Labial-tipo-gloss.jpg", inStock: true },
     { id: 61, name: "Labial matte en barra", price: 9.5, image: "/Labial-con-acabado-matte-en-barra.jpg", inStock: true },
